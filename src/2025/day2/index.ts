@@ -1,3 +1,5 @@
+import { splitByLength } from "../../helpers/strings";
+
 export default async (input: string[]) => {
   let sum = 0;
   const ranges = input[0].split(",");
@@ -11,16 +13,12 @@ export default async (input: string[]) => {
         if (length % j !== 0) {
           continue;
         }
-        let success = true;
         const slice = stringVersion.slice(0, j);
-        for (let k = 0; k < length; k += j) {
-          // console.log(i, j, k);
-          if (stringVersion.slice(k, k + j) !== slice) {
-            success = false;
-            break;
-          }
-        }
-        if (success) {
+        if (
+          splitByLength(stringVersion, j).every(
+            (substring) => substring === slice
+          )
+        ) {
           sum += i;
           break;
         }
@@ -28,5 +26,5 @@ export default async (input: string[]) => {
     }
   }
 
-  console.log(sum);
+  return sum;
 };

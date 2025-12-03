@@ -50,6 +50,5 @@ export default async (input: string[]) => {
 
     log.push(logInfo);
   }
-  console.table(log);
-  console.log("zeroCount", zeroCount);
+  return zeroCount;
 };

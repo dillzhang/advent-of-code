@@ -14,7 +14,8 @@ const importAndRun = async (year: string, day: string, isSample: boolean) => {
 
   console.log(`Running code for day ${day} on ${isSample ? "sample" : "code"}`);
   console.time(FUNCTION_RUNTIME_ID);
-  await funct(content);
+  const answer = await funct(content);
+  console.log("Answer:", answer);
   console.timeEnd(FUNCTION_RUNTIME_ID);
 };
 
