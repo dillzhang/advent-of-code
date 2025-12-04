@@ -6,8 +6,11 @@ export const to2DArray = (input: string[], delimiter = ""): string[][] => {
   return input.map((line) => line.split(delimiter));
 };
 
-export const map2d = <T, U>(input: T[][], transform: (cell: T) => U): U[][] => {
-  return input.map((row) => row.map((cell) => transform(cell)));
+export const map2d = <T, U>(
+  input: T[][],
+  transform: ((cell: T, x: number, y: number) => U) | ((cell: T) => U)
+): U[][] => {
+  return input.map((row, x) => row.map((cell, y) => transform(cell, x, y)));
 };
 
 const DELTAS = [-1, 0, 1];
