@@ -43,6 +43,6 @@ export default async (input: string[]) => {
       return [server, outputs.split(" ")];
     })
   );
-  return getPathsBetween(outputs, "you", []);
-  // return getPathsBetween(outputs, "svr", ["dac", "fft"]);
+  // return getPathsBetween(outputs, "you");
+  return getPathsBetween(outputs, "svr", ["dac", "fft"]);
 };
